@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>履歴書</title>
+  <link rel="stylesheet" href="{{ style_path }}">
+</head>
+<body class="document rirekisho">
+  <header class="rireki-header">
+    <h1>履 歴 書</h1>
+    <p>{{ profile.document.generated_at | western_year }}年{{ profile.document.generated_at | western_month }}月 現在</p>
+  </header>
+
+  <div class="rireki-top">
+    <table class="jis-table identity-table">
+      <tr class="kana-row"><th>ふりがな</th><td>{{ profile.person.name.kana }}</td></tr>
+      <tr class="name-row"><th>氏　　名</th><td>{{ profile.person.name.kanji }}</td></tr>
+      <tr>
+        <td colspan="2" class="birth">
+          {{ profile.person.birth_date | era }} 生
+          {% if profile.person.gender %}<span>※性別　{{ profile.person.gender }}</span>{% endif %}
+        </td>
+      </tr>
+    </table>
+    <div class="photo-box">
+      {% if photo_uri %}
+      <img src="{{ photo_uri }}" alt="証明写真">
+      {% else %}
+      <p>写真をはる位置</p>
+      <p>写真をはる必要が<br>ある場合</p>
+      <p>1. 縦 36〜40mm<br>2. 横 24〜30mm<br>3. 本人単身胸から上</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <table class="jis-table contact-table">
+    <tr class="kana-row"><th colspan="3">ふりがな</th><td>電話</td></tr>
+    <tr>
+      <th>現住所</th>
+      <td colspan="2">〒{{ profile.person.address.postal_code }} {{ profile.person.address.full }}</td>
+      <td>{{ profile.person.contact.phone }}</td>
+    </tr>
+    <tr class="kana-row"><th colspan="3">ふりがな</th><td>メール</td></tr>
+    <tr>
+      <th>連絡先</th>
+      <td colspan="2">（現住所以外に連絡を希望する場合のみ記入）</td>
+      <td>{{ profile.person.contact.email }}</td>
+    </tr>
+  </table>
+
+  <table class="jis-table history-table">
+    <tr><th>年</th><th>月</th><th>学　歴・職　歴（各別にまとめて書く）</th></tr>
+    {% for item in rirekisho_history[:12] %}
+    <tr class="{% if not item.year and not item.month and item.text in ['学歴', '職歴'] %}history-heading{% endif %}"><td>{{ item.year }}</td><td>{{ item.month }}</td><td>{{ item.text }}</td></tr>
+    {% endfor %}
+  </table>
+
+  <table class="jis-table history-table continuation">
+    <tr><th>年</th><th>月</th><th>学　歴・職　歴（各別にまとめて書く）</th></tr>
+    {% for item in rirekisho_history[12:] %}
+    <tr class="{% if not item.year and not item.month and item.text in ['学歴', '職歴'] %}history-heading{% endif %}"><td>{{ item.year }}</td><td>{{ item.month }}</td><td>{{ item.text }}</td></tr>
+    {% endfor %}
+    {% for _ in range(7 - (rirekisho_history[12:] | length)) %}
+    <tr><td>&nbsp;</td><td></td><td></td></tr>
+    {% endfor %}
+    <tr><th>年</th><th>月</th><th>免　許・資　格</th></tr>
+    {% for item in profile.certifications %}
+    <tr><td>{{ item.date | western_year }}</td><td>{{ item.date | western_month }}</td><td>{{ item.name }}</td></tr>
+    {% endfor %}
+    {% for item in profile.languages %}
+    <tr><td></td><td></td><td>{{ item.name }} {{ item.level }}</td></tr>
+    {% endfor %}
+    {% for _ in range(8 - ((profile.certifications | length) + (profile.languages | length))) %}
+    <tr><td>&nbsp;</td><td></td><td></td></tr>
+    {% endfor %}
+  </table>
+
+  <table class="jis-table boxed-text">
+    <tr><th>志望の動機、特技、好きな学科、アピールポイントなど</th></tr>
+    <tr><td>{{ profile.self_pr }}</td></tr>
+  </table>
+
+  <table class="jis-table boxed-text request-box">
+    <tr><th>本人希望記入欄（特に給料・職種・勤務時間・勤務地・その他についての希望などがあれば記入）</th></tr>
+    <tr><td>業務内容につきましては、貴社の規定に従います。<br><br>勤務条件につきましては、相談の上で決定させていただければ幸いです。</td></tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,113 @@
+document:
+  generated_at: "2026-06-03"
+  language: ja
+
+person:
+  name:
+    kanji: 山田 太郎
+    kana: ヤマダ タロウ
+  birth_date: "1990-04-02"
+  gender: 男
+  photo_path: examples/assets/profile.svg
+  address:
+    postal_code: "100-0001"
+    prefecture: 東京都
+    city: 千代田区
+    street: 千代田1-1
+  contact:
+    email: taro@example.com
+    phone: "+81 90 1234 5678"
+    linkedin: ""
+    github: github.com/example
+    website: example.com/resume
+
+preferences:
+  desired_roles:
+    - ソフトウェアエンジニア
+    - 技術リード
+  desired_areas:
+    - 業務改善
+    - 自動化
+    - 品質向上
+  relocation: 勤務地については相談可能
+  visa_support: ""
+  work_style: >
+    ハンズオンで設計・実装・改善に関わる技術職を希望します。
+  management_preference: >
+    ピープルマネジメントよりも、技術リードや設計・技術支援を希望します。
+  japanese_communication: >
+    日本語での社内コミュニケーションに対応可能です。英語での技術調整にも対応可能です。
+
+summary: >
+  技術職として10年以上の経験を持ち、業務システム、運用改善、自動化、品質向上に取り組んできました。
+  利用者や関係者と協力しながら、保守しやすく安定した仕組みを作ることを得意としています。
+
+skills:
+  - category: 開発
+    items:
+      - Python
+      - SQL
+      - Git
+
+  - category: 業務改善
+    items:
+      - 自動化
+      - ドキュメント整備
+      - 品質改善
+
+work_experience:
+  - company: Example Technologies株式会社
+    role: ソフトウェアエンジニア
+    start: "2022-04"
+    end: present
+    employment_type: 正社員
+    overview: 業務システムの開発、運用改善、自動化を担当。
+    responsibilities:
+      - Pythonを用いた社内向け業務ツールの設計・実装
+      - SQLによるデータ抽出および運用レポート作成
+      - 手作業の自動化と運用手順の標準化
+    achievements:
+      - 定型作業を自動化し、担当者の作業時間を削減
+      - 運用手順を整理し、問い合わせ対応の品質向上に貢献
+    technologies:
+      - Python
+      - SQL
+      - Git
+
+  - company: Example Systems株式会社
+    role: テクニカルサポートエンジニア
+    start: "2018-04"
+    end: "2022-03"
+    employment_type: 正社員
+    overview: 顧客向けシステムの運用支援と障害対応を担当。
+    responsibilities:
+      - 顧客問い合わせの一次切り分けおよび技術調査
+      - 障害対応手順の整備
+      - 開発チームへの改善要望の共有
+    achievements:
+      - 障害対応履歴を整理し、類似問い合わせの対応時間を短縮
+    technologies:
+      - Linux
+      - SQL
+      - Jira
+
+education:
+  - school: Example University
+    start: "2009-04"
+    end: "2013-03"
+    description: 工学部 卒業
+
+certifications:
+  - name: 日本語能力試験 N2
+    date: "2025-12"
+
+languages:
+  - name: 日本語
+    level: 日本語能力試験 N2
+
+  - name: 英語
+    level: ビジネスレベル
+
+self_pr: >
+  私は利用者にとって扱いやすい仕組みを作ることと、継続的な改善を大切にしています。
+  技術的な課題を整理し、関係者と協力しながら保守しやすい解決策を提案・実装してきました。

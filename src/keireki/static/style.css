@@ -1,0 +1,291 @@
+@page {
+  size: A4 portrait;
+  margin: 14mm 16mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #000;
+  font-family: "Noto Sans CJK JP", "Noto Sans JP", serif;
+  font-size: 10pt;
+  line-height: 1.45;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  vertical-align: top;
+}
+
+ul {
+  margin: 1mm 0 0 5mm;
+  padding: 0;
+}
+
+li {
+  margin: 0.4mm 0;
+}
+
+.rirekisho {
+  font-size: 10.5pt;
+}
+
+.rireki-header {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 4mm;
+}
+
+.rireki-header h1 {
+  font-size: 23pt;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.rireki-header p {
+  font-size: 12pt;
+}
+
+.rireki-top {
+  align-items: flex-start;
+  display: grid;
+  gap: 8mm;
+  grid-template-columns: 1fr 34mm;
+}
+
+.jis-table {
+  border: 1.4pt solid #000;
+}
+
+.jis-table th,
+.jis-table td {
+  border: 1pt solid #000;
+  font-weight: 400;
+  padding: 1.2mm 1.6mm;
+}
+
+.identity-table {
+  height: 50mm;
+}
+
+.identity-table th {
+  text-align: left;
+  width: 24mm;
+}
+
+.identity-table .kana-row {
+  height: 8mm;
+}
+
+.identity-table .name-row {
+  height: 32mm;
+}
+
+.identity-table .name-row td {
+  font-size: 28pt;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.identity-table .birth {
+  font-size: 12pt;
+  text-align: right;
+}
+
+.identity-table .birth span {
+  display: inline-block;
+  margin-left: 14mm;
+}
+
+.photo-box {
+  border: 0;
+  font-size: 8pt;
+  height: 40mm;
+  padding-top: 1mm;
+  text-align: center;
+  width: 34mm;
+}
+
+.photo-box img {
+  height: 40mm;
+  object-fit: cover;
+  width: 34mm;
+}
+
+.photo-box p + p {
+  margin-top: 3mm;
+}
+
+.contact-table {
+  margin-top: 0;
+}
+
+.contact-table .kana-row {
+  height: 7mm;
+}
+
+.contact-table th {
+  width: 22mm;
+}
+
+.contact-table td {
+  height: 18mm;
+}
+
+.contact-table td:last-child {
+  width: 45mm;
+}
+
+.history-table {
+  margin-top: 5mm;
+}
+
+.history-table th {
+  font-size: 12pt;
+  text-align: center;
+}
+
+.history-table th:first-child,
+.history-table td:first-child {
+  text-align: center;
+  width: 20mm;
+}
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2) {
+  text-align: center;
+  width: 10mm;
+}
+
+.history-table td {
+  font-size: 12pt;
+  height: 8.6mm;
+}
+
+.history-table td:nth-child(3) {
+  font-weight: 500;
+}
+
+.history-table .history-heading td:nth-child(3) {
+  text-align: center;
+}
+
+.continuation {
+  break-before: page;
+  margin-top: 6mm;
+}
+
+.boxed-text {
+  margin-top: 6mm;
+}
+
+.boxed-text th {
+  font-size: 9.5pt;
+  height: 7mm;
+  text-align: left;
+}
+
+.boxed-text td {
+  font-size: 10pt;
+  font-weight: 500;
+  height: 39mm;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.request-box td {
+  height: 25mm;
+}
+
+.shokumukeirekisho {
+  font-family: "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+  font-size: 9.2pt;
+  line-height: 1.3;
+}
+
+.shokumu-header {
+  display: grid;
+  grid-template-columns: 1fr 45mm;
+  margin-bottom: 6mm;
+}
+
+.shokumu-header h1 {
+  font-size: 15pt;
+  font-weight: 400;
+  grid-column: 1 / 3;
+  letter-spacing: 0;
+  margin-bottom: 3mm;
+  text-align: center;
+}
+
+.shokumu-header div {
+  grid-column: 2;
+  text-align: left;
+}
+
+.numbered-section {
+  margin-top: 2.2mm;
+}
+
+.numbered-section h2 {
+  background: none;
+  border: 0;
+  font-size: 12pt;
+  font-weight: 500;
+  margin-bottom: 0.8mm;
+  padding: 0;
+}
+
+.compact-text {
+  text-align: justify;
+  white-space: pre-line;
+}
+
+.career-table {
+  border: 1pt solid #000;
+}
+
+.career-table th,
+.career-table td {
+  border: 0.8pt solid #000;
+  padding: 1.1mm 1.6mm;
+}
+
+.career-table th {
+  background: #d9d9d9;
+  font-size: 11pt;
+  font-weight: 400;
+  text-align: center;
+}
+
+.career-table td {
+  font-size: 8.9pt;
+}
+
+.career-table tr {
+  break-inside: avoid;
+}
+
+.career-period {
+  text-align: center;
+  width: 34mm;
+}
+
+.indented-line {
+  margin-left: 8mm;
+}

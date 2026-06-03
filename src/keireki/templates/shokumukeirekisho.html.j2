@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>職務経歴書</title>
+  <link rel="stylesheet" href="{{ style_path }}">
+</head>
+<body class="document shokumukeirekisho">
+  <header class="shokumu-header">
+    <h1>職務経歴書</h1>
+    <div>
+      <p>{{ profile.document.generated_at | era }} 現在</p>
+      <p>{{ profile.person.name.kanji }}</p>
+    </div>
+  </header>
+
+  <section class="numbered-section">
+    <h2>１．職務概要</h2>
+    <p class="compact-text">{{ profile.summary }}</p>
+  </section>
+
+  <section class="numbered-section">
+    <h2>２．希望職種・条件</h2>
+    {% if profile.preferences.desired_roles %}
+    <p class="indented-line">希望職種：{{ profile.preferences.desired_roles | join("、") }}</p>
+    {% endif %}
+    {% if profile.preferences.desired_areas %}
+    <p class="indented-line">希望領域：{{ profile.preferences.desired_areas | join("、") }}</p>
+    {% endif %}
+    {% if profile.preferences.relocation %}
+    <p class="indented-line">就業希望：{{ profile.preferences.relocation }}</p>
+    {% endif %}
+    {% if profile.preferences.visa_support %}
+    <p class="indented-line">在留資格：{{ profile.preferences.visa_support }}</p>
+    {% endif %}
+    {% if profile.preferences.work_style %}
+    <p class="indented-line">志向：{{ profile.preferences.work_style }}</p>
+    {% endif %}
+    {% if profile.preferences.japanese_communication %}
+    <p class="indented-line">語学・コミュニケーション：{{ profile.preferences.japanese_communication }}</p>
+    {% endif %}
+  </section>
+
+  <section class="numbered-section">
+    <h2>３．職務経歴</h2>
+    <table class="career-table">
+      <tr><th class="career-period">期間</th><th>勤務先・業務内容</th></tr>
+      {% for item in recent_work_experience %}
+      <tr>
+        <td class="career-period">{{ item.start | era }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era }}{% endif %}</td>
+        <td>
+          <p><strong>{{ item.company }}</strong>　　業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
+          {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
+          <ul>{% for responsibility in item.responsibilities[:3] %}<li>{{ responsibility }}</li>{% endfor %}</ul>
+          {% if item.achievements %}
+          <p>主な成果：</p>
+          <ul>{% for achievement in item.achievements[:2] %}<li>{{ achievement }}</li>{% endfor %}</ul>
+          {% endif %}
+          {% if item.technologies %}<p>環境：{{ item.technologies[:8] | join("、") }}</p>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+      {% for item in older_work_experience %}
+      <tr>
+        <td class="career-period">{{ item.start | era }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era }}{% endif %}</td>
+        <td>
+          <p><strong>{{ item.company }}</strong>　　業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
+          {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </section>
+
+  <section class="numbered-section">
+    <h2>４．取得資格</h2>
+    {% for item in profile.certifications %}
+    <p class="indented-line">{{ item.date | era }}　{{ item.name }}</p>
+    {% endfor %}
+  </section>
+
+  <section class="numbered-section">
+    <h2>５．生かせる能力・スキル</h2>
+    {% for group in profile.skills %}
+    <p class="indented-line">・{{ group.category }}（{{ group.items | join("、") }}）</p>
+    {% endfor %}
+    {% for item in profile.languages %}
+    <p class="indented-line">・{{ item.name }}：{{ item.level }}</p>
+    {% endfor %}
+  </section>
+
+  <section class="numbered-section">
+    <h2>６．自己ＰＲ</h2>
+    <p class="compact-text">{{ profile.self_pr }}</p>
+  </section>
+</body>
+</html>

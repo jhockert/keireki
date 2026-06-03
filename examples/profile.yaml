@@ -1,0 +1,142 @@
+document:
+  generated_at: "2026-06-03"
+  language: ja
+
+person:
+  name:
+    kanji: 山田 太郎
+    kana: ヤマダ タロウ
+  birth_date: "1990-04-02"
+  gender: 男
+  photo_path: examples/assets/profile.svg
+  address:
+    postal_code: "100-0001"
+    prefecture: 東京都
+    city: 千代田区
+    street: 千代田1-1
+  contact:
+    email: taro@example.com
+    phone: "+81 90 1234 5678"
+    linkedin: ""
+    github: github.com/example
+    website: example.com/resume
+
+preferences:
+  desired_roles:
+    - DevOpsエンジニア
+    - プラットフォームエンジニア
+    - インフラエンジニア
+  desired_areas:
+    - CI/CD
+    - 自動化
+    - Linux基盤
+    - 開発者向けプラットフォーム
+  relocation: 日本国内での勤務を希望
+  visa_support: ""
+  work_style: >
+    Senior Engineerとして、設計・改善・実装を担うハンズオンの技術リードを希望します。
+  management_preference: >
+    ピープルマネジメントよりも、技術リードや設計・技術支援を希望します。
+  japanese_communication: >
+    日本語での社内コミュニケーションに対応可能です。英語での技術調整にも対応可能です。
+
+summary: >
+  IT業界にて10年以上の経験を持つDevOpsエンジニア／プラットフォームエンジニアです。
+  Linux基盤、CI/CD、自動化、内部開発者向けプラットフォームの設計・運用・改善を担当してきました。
+
+skills:
+  - category: DevOps
+    items:
+      - Jenkins
+      - CI/CD
+      - Git
+      - 自動化
+
+  - category: インフラ
+    items:
+      - Linux
+      - Docker
+      - Kubernetes
+      - VMware
+
+  - category: Infrastructure as Code（IaC）
+    items:
+      - Ansible
+
+  - category: プログラミング
+    items:
+      - Python
+      - Go
+      - Bash
+
+  - category: 監視
+    items:
+      - Grafana
+
+work_experience:
+  - company: Example Technologies株式会社
+    role: DevOps Tech Lead
+    employment_type: 正社員
+    start: "2023-04"
+    end: present
+    overview: >
+      複数チームが利用するCI/CD基盤および開発者向けプラットフォームの設計・運用を担当。
+    responsibilities:
+      - Jenkinsを用いたCI/CD基盤の設計・運用
+      - AnsibleによるLinuxサーバーの構成管理
+      - DockerおよびKubernetes環境の運用改善
+      - 開発チームとの要件整理および技術支援
+    achievements:
+      - ビルド時間を短縮し、開発者の待ち時間を削減
+      - 構成管理の標準化により運用品質を向上
+    technologies:
+      - Linux
+      - Jenkins
+      - Ansible
+      - Docker
+      - Kubernetes
+      - Python
+      - Go
+
+  - company: Example Systems株式会社
+    role: インフラエンジニア
+    employment_type: 正社員
+    start: "2018-04"
+    end: "2023-03"
+    overview: >
+      社内IT基盤、Linuxサーバー、ネットワーク、監視環境の運用・改善を担当。
+    responsibilities:
+      - Linuxサーバーおよびネットワーク機器の運用
+      - 監視環境の改善および障害対応
+      - 手作業の自動化スクリプト作成
+    achievements:
+      - 運用手順を標準化し、障害対応時間を短縮
+    technologies:
+      - Linux
+      - Bash
+      - Python
+      - Grafana
+
+education:
+  - school: Example University
+    start: "2009-04"
+    end: "2013-03"
+    description: 情報工学部 卒業
+
+certifications:
+  - name: 日本語能力試験 2級
+    date: "2024-12"
+
+  - name: AWS Certified Cloud Practitioner
+    date: "2023-06"
+
+languages:
+  - name: 日本語
+    level: 日本語能力試験 2級
+
+  - name: 英語
+    level: ビジネスレベル
+
+self_pr: >
+  私は開発者が安心して利用できる基盤づくりと、継続的な運用改善を得意としています。
+  技術的な課題を整理し、関係者と協力しながら保守しやすい仕組みを作ることを大切にしています。
