@@ -67,10 +67,7 @@
     {% for item in profile.certifications %}
     <tr><td>{{ item.date | western_year }}</td><td>{{ item.date | western_month }}</td><td>{{ item.name }}</td></tr>
     {% endfor %}
-    {% for item in profile.languages %}
-    <tr><td></td><td></td><td>{{ item.name }} {{ item.level }}</td></tr>
-    {% endfor %}
-    {% for _ in range(8 - ((profile.certifications | length) + (profile.languages | length))) %}
+    {% for _ in range(8 - (profile.certifications | length)) %}
     <tr><td>&nbsp;</td><td></td><td></td></tr>
     {% endfor %}
   </table>
@@ -82,7 +79,7 @@
 
   <table class="jis-table boxed-text request-box">
     <tr><th>本人希望記入欄（特に給料・職種・勤務時間・勤務地・その他についての希望などがあれば記入）</th></tr>
-    <tr><td>業務内容につきましては、貴社の規定に従います。<br><br>勤務条件につきましては、相談の上で決定させていただければ幸いです。</td></tr>
+    <tr><td>{{ profile.preferences.request_notes }}</td></tr>
   </table>
 </body>
 </html>

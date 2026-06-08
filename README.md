@@ -56,9 +56,14 @@ uv run keireki generate private/profile.yaml
 The `private/` directory is ignored by Git by default, so personal resumes, addresses,
 phone numbers, and photos do not accidentally get committed.
 
+See [docs/profile-yaml.md](docs/profile-yaml.md) for the complete profile YAML
+schema and all supported settings.
+
 Photos are optional. If `person.photo_path` is set, the image is rendered in the
 履歴書 photo area. If it is blank, the template shows the traditional photo
 placeholder text.
+
+Use `preferences.request_notes` for the 履歴書 本人希望記入欄 text.
 
 ## Development
 

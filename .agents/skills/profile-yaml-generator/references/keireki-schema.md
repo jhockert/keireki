@@ -1,6 +1,8 @@
 # Keireki YAML Reference
 
 Use this reference when creating `profile.yaml` for the Keireki project.
+The canonical public schema reference is `docs/profile-yaml.md`; keep this file
+aligned with it when fields change.
 
 ## Top-Level Shape
 
@@ -36,6 +38,7 @@ preferences:
   work_style: ""
   management_preference: ""
   japanese_communication: ""
+  request_notes: ""
 
 summary: >
   ...
@@ -95,6 +98,7 @@ self_pr: >
 ## Content Style
 
 - Keep `summary` around 2-4 concise Japanese sentences.
+- Use `preferences.request_notes` for 履歴書の本人希望記入欄. Keep it conservative and factual, such as desired role family, location/start-date discussion, or visa/logistics notes when relevant.
 - Recent roles should be more detailed than older roles.
 - Use achievements for the newest/relevant roles.
 - Keep technologies, tools, methods, standards, and programming languages in their normal industry form.
@@ -107,3 +111,4 @@ self_pr: >
 - English business communication: `英語での会議・文書作成・技術調整に対応可能です。`
 - Hands-on technical preference: `設計・改善・実装を担うハンズオンの技術職を希望します。`
 - Management preference: `ピープルマネジメントよりも、専門性を活かした技術貢献を希望します。`
+- Rirekisho request notes: `職種・勤務地・勤務条件につきましては、相談の上で決定させていただければ幸いです。`

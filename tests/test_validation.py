@@ -76,6 +76,19 @@ def test_overlapping_jobs_are_errors() -> None:
     assert any("重複" in error for error in result.errors)
 
 
+def test_same_month_job_transition_is_allowed() -> None:
+    profile = load_profile(FIXTURES / "valid_profile.yaml")
+    data = profile.model_dump()
+    data["work_experience"][0]["start"] = "2023-09"
+    data["work_experience"][0]["end"] = "2026-01"
+    data["work_experience"][1]["start"] = "2022-09"
+    data["work_experience"][1]["end"] = "2023-09"
+
+    result = validate_profile(Profile.model_validate(data))
+
+    assert not any("重複" in error for error in result.errors)
+
+
 def test_incomplete_work_entry_is_error() -> None:
     profile = load_profile(FIXTURES / "valid_profile.yaml")
     data = profile.model_dump()

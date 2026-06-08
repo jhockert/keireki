@@ -13,6 +13,7 @@ Important paths:
 - `src/keireki/`: application code
 - `src/keireki/templates/`: Jinja2 document templates
 - `src/keireki/static/style.css`: print CSS
+- `docs/profile-yaml.md`: canonical public profile YAML reference
 - `examples/profile.yaml`: fictional public sample profile
 - `examples/assets/`: fictional public sample assets
 - `private/`: ignored personal data and photos
@@ -56,7 +57,8 @@ professionals. Do not add personal resume details to skill files.
 
 ## Implementation Notes
 
-- Keep the YAML schema in `src/keireki/models.py` and
+- Keep the YAML schema in `src/keireki/models.py`, `docs/profile-yaml.md`,
+  `examples/profile.yaml`, `tests/fixtures/valid_profile.yaml`, and
   `.agents/skills/profile-yaml-generator/references/keireki-schema.md` aligned.
 - Validation warnings should be practical and tunable through constants in
   `src/keireki/validation.py`.

@@ -121,6 +121,7 @@ class Preferences(KeirekiModel):
     work_style: str = ""
     management_preference: str = ""
     japanese_communication: str = ""
+    request_notes: str = ""
 
 
 class Profile(KeirekiModel):

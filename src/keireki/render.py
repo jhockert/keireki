@@ -9,8 +9,14 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from pydantic import ValidationError
 from weasyprint import HTML
 
-from keireki.dates import format_japanese_era, format_period, western_month, western_year
-from keireki.models import Profile
+from keireki.dates import (
+    format_japanese_era,
+    format_japanese_era_month,
+    format_period,
+    western_month,
+    western_year,
+)
+from keireki.models import Education, Profile
 from keireki.validation import sorted_work_experience, validate_page_count, validate_profile
 
 
@@ -90,6 +96,7 @@ def _environment() -> Environment:
         lstrip_blocks=True,
     )
     env.filters["era"] = format_japanese_era
+    env.filters["era_month"] = format_japanese_era_month
     env.filters["period"] = format_period
     env.filters["western_month"] = western_month
     env.filters["western_year"] = western_year
@@ -137,7 +144,7 @@ def _rirekisho_history(profile: Profile) -> list[dict[str, str]]:
             {
                 "year": western_year(education.end),
                 "month": western_month(education.end),
-                "text": f"{education.school} 修了 {education.description}".strip(),
+                "text": _rirekisho_education_completion(education),
             }
         )
 
@@ -165,4 +172,19 @@ def _rirekisho_history(profile: Profile) -> list[dict[str, str]]:
 
 
 def _rirekisho_company(company: str) -> str:
+    if "経由" in company and "（" in company:
+        via = company.split("（", maxsplit=1)[1].split("経由", maxsplit=1)[0]
+        return via.rstrip("）・")
     return company.split("（", maxsplit=1)[0]
+
+
+def _rirekisho_education_completion(education: Education) -> str:
+    description = education.description
+    if "高等学校卒業" in description:
+        major = description.replace("・高等学校卒業", "").strip()
+        if major:
+            return f"{education.school} 卒業（{major}）"
+        return f"{education.school} 卒業"
+    if description:
+        return f"{education.school} 修了 {description}"
+    return f"{education.school} 修了"

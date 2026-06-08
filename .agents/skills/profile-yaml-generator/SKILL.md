@@ -67,4 +67,4 @@ Ask for these if missing or conflicting:
 
 ## Resources
 
-- Read [Keireki YAML Reference](references/keireki-schema.md) when creating or validating Keireki YAML, or when schema details are needed.
+- Read the project canonical `docs/profile-yaml.md` when available, or [Keireki YAML Reference](references/keireki-schema.md) when using the skill outside the Keireki repo.

@@ -84,8 +84,8 @@ def _validate_periods(profile: Profile, errors: list[str]) -> None:
         for other, other_start, other_end in periods[index + 1 :]:
             normalized_other_end = other_end or current_marker
             overlaps = (
-                start.sort_date <= normalized_other_end.sort_date
-                and other_start.sort_date <= normalized_end.sort_date
+                start.sort_date < normalized_other_end.sort_date
+                and other_start.sort_date < normalized_end.sort_date
             )
             if overlaps:
                 errors.append(f"{work.company} と {other.company} の在職期間が重複しています。")

@@ -47,9 +47,10 @@
       <tr><th class="career-period">期間</th><th>勤務先・業務内容</th></tr>
       {% for item in recent_work_experience %}
       <tr>
-        <td class="career-period">{{ item.start | era }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era }}{% endif %}</td>
+        <td class="career-period">{{ item.start | era_month }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era_month }}{% endif %}</td>
         <td>
-          <p><strong>{{ item.company }}</strong>　　業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
+          <p class="career-company"><strong>{{ item.company }}</strong></p>
+          <p class="career-role">業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
           {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
           <ul>{% for responsibility in item.responsibilities[:3] %}<li>{{ responsibility }}</li>{% endfor %}</ul>
           {% if item.achievements %}
@@ -62,9 +63,10 @@
       {% endfor %}
       {% for item in older_work_experience %}
       <tr>
-        <td class="career-period">{{ item.start | era }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era }}{% endif %}</td>
+        <td class="career-period">{{ item.start | era_month }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era_month }}{% endif %}</td>
         <td>
-          <p><strong>{{ item.company }}</strong>　　業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
+          <p class="career-company"><strong>{{ item.company }}</strong></p>
+          <p class="career-role">業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
           {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
         </td>
       </tr>

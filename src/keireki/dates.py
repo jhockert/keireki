@@ -61,6 +61,13 @@ def format_japanese_era(value: str | date | PartialDate) -> str:
     return f"{era_name}{year_text}年{parsed.month}月{parsed.day}日"
 
 
+def format_japanese_era_month(value: str | date | PartialDate) -> str:
+    parsed = parse_partial_date(value)
+    era_name, era_year = _era_for(parsed.sort_date)
+    year_text = "元" if era_year == 1 else str(era_year)
+    return f"{era_name}{year_text}年{parsed.month}月"
+
+
 def format_period(start: str | date | PartialDate, end: str | date | PartialDate) -> str:
     start_text = format_japanese_era(start)
     if isinstance(end, str) and end.lower() == "present":
