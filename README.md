@@ -56,6 +56,17 @@ uv run keireki generate private/profile.yaml
 The `private/` directory is ignored by Git by default, so personal resumes, addresses,
 phone numbers, and photos do not accidentally get committed.
 
+If you want `private/` to track changes you can make it a separate private Git repository:
+
+```bash
+cd private
+git init
+git remote add origin git@github.com:your-user/keireki-private.git
+git add .
+git commit -m "Back up private profile data"
+git push -u origin main
+```
+
 See [docs/profile-yaml.md](docs/profile-yaml.md) for the complete profile YAML
 schema and all supported settings.
 
