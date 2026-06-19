@@ -31,6 +31,8 @@ person:
     website: ""
 
 preferences:
+  headline: ""
+  tagline: ""
   desired_roles: []
   desired_areas: []
   relocation: ""
@@ -42,6 +44,8 @@ preferences:
 
 summary: >
   ...
+
+technical_highlights: []
 
 skills:
   - category: ""
@@ -98,6 +102,8 @@ self_pr: >
 ## Content Style
 
 - Keep `summary` around 2-4 concise Japanese sentences.
+- Use `technical_highlights` for 3-6 high-signal achievements, scale, or architecture scope that should be visible before detailed career history.
+- Use `preferences.headline` and `preferences.tagline` for concise 職務経歴書 header `職種` / `専門領域` lines when helpful for technical screening.
 - Use `preferences.request_notes` for 履歴書の本人希望記入欄. Keep it conservative and factual, such as desired role family, location/start-date discussion, or visa/logistics notes when relevant.
 - Recent roles should be more detailed than older roles.
 - Use achievements for the newest/relevant roles.

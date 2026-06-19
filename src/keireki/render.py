@@ -13,10 +13,12 @@ from keireki.dates import (
     format_japanese_era,
     format_japanese_era_month,
     format_period,
+    parse_partial_date,
+    parse_period_end,
     western_month,
     western_year,
 )
-from keireki.models import Education, Profile
+from keireki.models import Education, Profile, WorkExperience
 from keireki.validation import sorted_work_experience, validate_page_count, validate_profile
 
 
@@ -29,6 +31,14 @@ class GeneratedFiles:
     rirekisho_pdf: Path
     shokumukeirekisho_pdf: Path
     warnings: list[str]
+
+
+@dataclass
+class WorkExperienceGroup:
+    company: str
+    start: str
+    end: str
+    items: list[WorkExperience]
 
 
 def load_profile(path: Path) -> Profile:
@@ -110,6 +120,7 @@ def _context(profile: Profile) -> dict[str, object]:
         "photo_uri": _photo_uri(profile),
         "rirekisho_history": _rirekisho_history(profile),
         "work_experience": work_experience,
+        "grouped_work_experience": _group_work_experience(work_experience),
         "recent_work_experience": work_experience[:2],
         "older_work_experience": work_experience[2:],
         "style_path": "static/style.css",
@@ -126,6 +137,41 @@ def _photo_uri(profile: Profile) -> str:
     if not path.exists():
         return ""
     return path.as_uri()
+
+
+def _group_work_experience(work_experience: list[WorkExperience]) -> list[WorkExperienceGroup]:
+    groups: list[WorkExperienceGroup] = []
+    for work in work_experience:
+        company = _shokumukeirekisho_company(work.company)
+        group = next((item for item in groups if item.company == company), None)
+        if group is None:
+            groups.append(
+                WorkExperienceGroup(
+                    company=company,
+                    start=work.start,
+                    end=work.end,
+                    items=[work],
+                )
+            )
+            continue
+
+        group.items.append(work)
+        if parse_partial_date(work.start).sort_date < parse_partial_date(group.start).sort_date:
+            group.start = work.start
+        if _is_later_end(work.end, group.end):
+            group.end = work.end
+
+    return groups
+
+
+def _is_later_end(candidate: str, current: str) -> bool:
+    candidate_end = parse_period_end(candidate)
+    current_end = parse_period_end(current)
+    if candidate_end is None:
+        return True
+    if current_end is None:
+        return False
+    return candidate_end.sort_date > current_end.sort_date
 
 
 def _rirekisho_history(profile: Profile) -> list[dict[str, str]]:
@@ -175,6 +221,10 @@ def _rirekisho_company(company: str) -> str:
     if "経由" in company and "（" in company:
         via = company.split("（", maxsplit=1)[1].split("経由", maxsplit=1)[0]
         return via.rstrip("）・")
+    return company.split("（", maxsplit=1)[0]
+
+
+def _shokumukeirekisho_company(company: str) -> str:
     return company.split("（", maxsplit=1)[0]
 
 

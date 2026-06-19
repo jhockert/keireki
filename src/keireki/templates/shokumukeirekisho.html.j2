@@ -11,6 +11,22 @@
     <div>
       <p>{{ profile.document.generated_at | era }} 現在</p>
       <p>{{ profile.person.name.kanji }}</p>
+      {% if profile.preferences.headline or profile.preferences.tagline %}
+      <dl class="profile-specialization">
+        {% if profile.preferences.headline %}
+        <div>
+          <dt>職種</dt>
+          <dd>{{ profile.preferences.headline }}</dd>
+        </div>
+        {% endif %}
+        {% if profile.preferences.tagline %}
+        <div>
+          <dt>専門領域</dt>
+          <dd>{{ profile.preferences.tagline }}</dd>
+        </div>
+        {% endif %}
+      </dl>
+      {% endif %}
     </div>
   </header>
 
@@ -19,8 +35,15 @@
     <p class="compact-text">{{ profile.summary }}</p>
   </section>
 
+  {% if profile.technical_highlights %}
   <section class="numbered-section">
-    <h2>２．希望職種・条件</h2>
+    <h2>２．主な実績</h2>
+    <ul class="highlight-list">{% for item in profile.technical_highlights %}<li>{{ item }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <section class="numbered-section">
+    <h2>{% if profile.technical_highlights %}３{% else %}２{% endif %}．希望職種・条件</h2>
     {% if profile.preferences.desired_roles %}
     <p class="indented-line">希望職種：{{ profile.preferences.desired_roles | join("、") }}</p>
     {% endif %}
@@ -41,33 +64,30 @@
     {% endif %}
   </section>
 
-  <section class="numbered-section">
-    <h2>３．職務経歴</h2>
+  <section class="numbered-section{% if profile.technical_highlights %} career-section-break{% endif %}">
+    <h2>{% if profile.technical_highlights %}４{% else %}３{% endif %}．職務経歴</h2>
     <table class="career-table">
       <tr><th class="career-period">期間</th><th>勤務先・業務内容</th></tr>
-      {% for item in recent_work_experience %}
+      {% for group in grouped_work_experience %}
+      {% set group_index = loop.index0 %}
       <tr>
-        <td class="career-period">{{ item.start | era_month }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era_month }}{% endif %}</td>
+        <td class="career-period">{{ group.start | era_month }}<br>～<br>{% if group.end == "present" %}現在{% else %}{{ group.end | era_month }}{% endif %}</td>
         <td>
-          <p class="career-company"><strong>{{ item.company }}</strong></p>
-          <p class="career-role">業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
-          {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
-          <ul>{% for responsibility in item.responsibilities[:3] %}<li>{{ responsibility }}</li>{% endfor %}</ul>
-          {% if item.achievements %}
-          <p>主な成果：</p>
-          <ul>{% for achievement in item.achievements[:2] %}<li>{{ achievement }}</li>{% endfor %}</ul>
-          {% endif %}
-          {% if item.technologies %}<p>環境：{{ item.technologies[:8] | join("、") }}</p>{% endif %}
-        </td>
-      </tr>
-      {% endfor %}
-      {% for item in older_work_experience %}
-      <tr>
-        <td class="career-period">{{ item.start | era_month }}<br>～<br>{% if item.end == "present" %}現在{% else %}{{ item.end | era_month }}{% endif %}</td>
-        <td>
-          <p class="career-company"><strong>{{ item.company }}</strong></p>
-          <p class="career-role">業務内容：{{ item.role }}（{{ item.employment_type }}）</p>
-          {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
+          <p class="career-company"><strong>{{ group.company }}</strong></p>
+          {% for item in group.items %}
+          <div class="career-role-block">
+            <p class="career-role">{{ item.start | era_month }}～{% if item.end == "present" %}現在{% else %}{{ item.end | era_month }}{% endif %}：{{ item.role }}（{{ item.employment_type }}）</p>
+            {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
+            {% if group_index == 0 %}
+            <ul>{% for responsibility in item.responsibilities[:2] %}<li>{{ responsibility }}</li>{% endfor %}</ul>
+            {% if item.achievements %}
+            <p>主な成果：</p>
+            <ul>{% for achievement in item.achievements[:2] %}<li>{{ achievement }}</li>{% endfor %}</ul>
+            {% endif %}
+            {% if item.technologies %}<p>環境：{{ item.technologies[:8] | join("、") }}</p>{% endif %}
+            {% endif %}
+          </div>
+          {% endfor %}
         </td>
       </tr>
       {% endfor %}
@@ -75,14 +95,14 @@
   </section>
 
   <section class="numbered-section">
-    <h2>４．取得資格</h2>
+    <h2>{% if profile.technical_highlights %}５{% else %}４{% endif %}．取得資格</h2>
     {% for item in profile.certifications %}
     <p class="indented-line">{{ item.date | era }}　{{ item.name }}</p>
     {% endfor %}
   </section>
 
   <section class="numbered-section">
-    <h2>５．生かせる能力・スキル</h2>
+    <h2>{% if profile.technical_highlights %}６{% else %}５{% endif %}．生かせる能力・スキル</h2>
     {% for group in profile.skills %}
     <p class="indented-line">・{{ group.category }}（{{ group.items | join("、") }}）</p>
     {% endfor %}
@@ -92,7 +112,7 @@
   </section>
 
   <section class="numbered-section">
-    <h2>６．自己ＰＲ</h2>
+    <h2>{% if profile.technical_highlights %}７{% else %}６{% endif %}．自己ＰＲ</h2>
     <p class="compact-text">{{ profile.self_pr }}</p>
   </section>
 </body>

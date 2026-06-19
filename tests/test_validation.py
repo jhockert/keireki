@@ -4,7 +4,7 @@ import pytest
 from pydantic import ValidationError
 
 from keireki.models import Profile
-from keireki.render import load_profile
+from keireki.render import _group_work_experience, load_profile
 from keireki.validation import validate_page_count, validate_profile
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -87,6 +87,34 @@ def test_same_month_job_transition_is_allowed() -> None:
     result = validate_profile(Profile.model_validate(data))
 
     assert not any("重複" in error for error in result.errors)
+
+
+def test_work_experience_grouping_merges_same_employer() -> None:
+    profile = load_profile(FIXTURES / "valid_profile.yaml")
+    data = profile.model_dump()
+    data["work_experience"].append(
+        {
+            "company": "Example Technologies株式会社（Example Consulting経由）",
+            "role": "技術リード",
+            "start": "2024-04",
+            "end": "present",
+            "employment_type": "正社員",
+            "overview": "",
+            "responsibilities": ["技術リード"],
+            "achievements": [],
+            "technologies": [],
+        }
+    )
+    profile = Profile.model_validate(data)
+
+    groups = _group_work_experience(profile.work_experience)
+
+    example_group = next(
+        group for group in groups if group.company == "Example Technologies株式会社"
+    )
+    assert example_group.start == "2022-04"
+    assert example_group.end == "present"
+    assert [item.role for item in example_group.items] == ["ソフトウェアエンジニア", "技術リード"]
 
 
 def test_incomplete_work_entry_is_error() -> None:

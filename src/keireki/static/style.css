@@ -220,7 +220,7 @@ li {
 
 .shokumu-header {
   display: grid;
-  grid-template-columns: 1fr 45mm;
+  grid-template-columns: 1fr 110mm;
   margin-bottom: 6mm;
 }
 
@@ -236,6 +236,31 @@ li {
 .shokumu-header div {
   grid-column: 2;
   text-align: left;
+}
+
+.profile-specialization {
+  font-size: 8.2pt;
+  line-height: 1.35;
+  margin-top: 1.4mm;
+}
+
+.profile-specialization div {
+  display: grid;
+  grid-template-columns: 17mm 1fr;
+  margin-top: 0.5mm;
+}
+
+.profile-specialization dt {
+  font-weight: 600;
+}
+
+.profile-specialization dt::before {
+  content: "■";
+  margin-right: 1mm;
+}
+
+.profile-specialization dd {
+  margin: 0;
 }
 
 .numbered-section {
@@ -254,6 +279,15 @@ li {
 .compact-text {
   text-align: justify;
   white-space: pre-line;
+}
+
+.highlight-list {
+  margin-left: 7mm;
+}
+
+.career-section-break {
+  break-before: page;
+  margin-top: 0;
 }
 
 .career-table {
@@ -292,6 +326,10 @@ li {
 .career-role {
   color: #333;
   margin-bottom: 0.8mm;
+}
+
+.career-role-block + .career-role-block {
+  margin-top: 1.8mm;
 }
 
 .career-period {

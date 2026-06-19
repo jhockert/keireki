@@ -114,6 +114,8 @@ class Language(KeirekiModel):
 
 
 class Preferences(KeirekiModel):
+    headline: str = ""
+    tagline: str = ""
     desired_roles: list[str] = Field(default_factory=list)
     desired_areas: list[str] = Field(default_factory=list)
     relocation: str = ""
@@ -129,6 +131,7 @@ class Profile(KeirekiModel):
     person: Person
     preferences: Preferences = Field(default_factory=Preferences)
     summary: str
+    technical_highlights: list[str] = Field(default_factory=list)
     skills: list[SkillGroup] = Field(default_factory=list)
     work_experience: list[WorkExperience]
     education: list[Education]

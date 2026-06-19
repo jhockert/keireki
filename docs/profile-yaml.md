@@ -34,6 +34,8 @@ person:
     website: ""
 
 preferences:
+  headline: ""
+  tagline: ""
   desired_roles: []
   desired_areas: []
   relocation: ""
@@ -45,6 +47,8 @@ preferences:
 
 summary: >
   ...
+
+technical_highlights: []
 
 skills:
   - category: ""
@@ -138,8 +142,12 @@ Same-month or same-day job handoffs are allowed. For example, one job may end in
 ### `preferences`
 
 These fields render in 職務経歴書 under `希望職種・条件`, except
-`request_notes`, which renders in the 履歴書 本人希望記入欄.
+`headline` and `tagline`, which render as labeled `職種` / `専門領域`
+lines under the name in the 職務経歴書 header, and `request_notes`, which
+renders in the 履歴書 本人希望記入欄.
 
+- `headline`: Short professional identity line for the 職務経歴書 header `職種`.
+- `tagline`: Compact keyword line for the 職務経歴書 header `専門領域`.
 - `desired_roles`: Target role names.
 - `desired_areas`: Target technical or business domains.
 - `relocation`: Relocation or work-location preference.
@@ -156,6 +164,12 @@ These fields render in 職務経歴書 under `希望職種・条件`, except
 
 Short professional summary for the top of the 職務経歴書. Keep it concise,
 usually 2-4 Japanese sentences.
+
+### `technical_highlights`
+
+Optional highlight bullets rendered near the top of the 職務経歴書 under
+`主な実績`. Use this for 3-6 high-signal achievements, scale, or architecture
+scope that should be visible before detailed career history.
 
 ### `skills`
 

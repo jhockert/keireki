@@ -22,6 +22,8 @@ person:
     website: example.com/resume
 
 preferences:
+  headline: DevOps Engineer / Platform Engineer
+  tagline: CI/CD基盤 | Automation | Linux | 開発者向け基盤
   desired_roles:
     - DevOpsエンジニア
     - プラットフォームエンジニア
@@ -46,6 +48,11 @@ preferences:
 summary: >
   IT業界にて10年以上の経験を持つDevOpsエンジニア／プラットフォームエンジニアです。
   Linux基盤、CI/CD、自動化、内部開発者向けプラットフォームの設計・運用・改善を担当してきました。
+
+technical_highlights:
+  - 複数チームが利用するCI/CD基盤の運用改善を担当
+  - Linux基盤と自動化により、開発・運用作業の標準化に貢献
+  - JenkinsとAnsibleを用いたビルド・構成管理の保守性向上に取り組む
 
 skills:
   - category: DevOps

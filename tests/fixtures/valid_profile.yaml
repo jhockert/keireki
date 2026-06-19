@@ -22,6 +22,8 @@ person:
     website: example.com/resume
 
 preferences:
+  headline: ソフトウェアエンジニア / 技術リード
+  tagline: Python | SQL | Git | 業務自動化
   desired_roles:
     - ソフトウェアエンジニア
     - 技術リード
@@ -43,6 +45,11 @@ preferences:
 summary: >
   技術職として10年以上の経験を持ち、業務システム、運用改善、自動化、品質向上に取り組んできました。
   利用者や関係者と協力しながら、保守しやすく安定した仕組みを作ることを得意としています。
+
+technical_highlights:
+  - Pythonを用いた社内向け業務ツールの設計・実装を担当
+  - 手作業の自動化により、定型業務の作業時間削減に貢献
+  - 運用手順を整理し、問い合わせ対応の品質向上に貢献
 
 skills:
   - category: 開発
