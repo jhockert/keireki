@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Keireki Noto Sans JP";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("fonts/NotoSansJP-VariableFont_wght.ttf") format("truetype");
+}
+
 @page {
   size: A4 portrait;
   margin: 14mm 16mm;
@@ -9,7 +16,7 @@
 
 body {
   color: #000;
-  font-family: "Noto Sans CJK JP", "Noto Sans JP", serif;
+  font-family: "Keireki Noto Sans JP", sans-serif;
   font-size: 10pt;
   line-height: 1.45;
 }
@@ -213,7 +220,7 @@ li {
 }
 
 .shokumukeirekisho {
-  font-family: "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+  font-family: "Keireki Noto Sans JP", sans-serif;
   font-size: 9.2pt;
   line-height: 1.3;
 }

@@ -17,3 +17,7 @@ def test_generate_cli(tmp_path: Path) -> None:
     assert (tmp_path / "shokumukeirekisho.pdf").stat().st_size > 0
     assert (tmp_path / "rirekisho.html").stat().st_size > 0
     assert (tmp_path / "shokumukeirekisho.html").stat().st_size > 0
+    shokumukeirekisho_html = (tmp_path / "shokumukeirekisho.html").read_text(
+        encoding="utf-8"
+    )
+    assert "障害対応履歴を整理し、類似問い合わせの対応時間を短縮" in shokumukeirekisho_html

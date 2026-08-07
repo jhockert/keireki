@@ -78,11 +78,12 @@
           <div class="career-role-block">
             <p class="career-role">{{ item.start | era_month }}～{% if item.end == "present" %}現在{% else %}{{ item.end | era_month }}{% endif %}：{{ item.role }}（{{ item.employment_type }}）</p>
             {% if item.overview %}<p>{{ item.overview }}</p>{% endif %}
-            {% if group_index == 0 %}
+            {% if group_index < 2 %}
             <ul>{% for responsibility in item.responsibilities[:2] %}<li>{{ responsibility }}</li>{% endfor %}</ul>
             {% if item.achievements %}
+            {% set achievement_limit = 4 if group_index == 1 else 2 %}
             <p>主な成果：</p>
-            <ul>{% for achievement in item.achievements[:2] %}<li>{{ achievement }}</li>{% endfor %}</ul>
+            <ul>{% for achievement in item.achievements[:achievement_limit] %}<li>{{ achievement }}</li>{% endfor %}</ul>
             {% endif %}
             {% if item.technologies %}<p>環境：{{ item.technologies[:8] | join("、") }}</p>{% endif %}
             {% endif %}

@@ -14,9 +14,9 @@ Japanese PDF documents with repeatable templates.
 - Python 3.12 or newer
 - [uv](https://docs.astral.sh/uv/)
 - WeasyPrint system dependencies
-- Japanese fonts such as Noto Sans CJK JP
 
-The Docker workflow below installs the PDF/font dependencies for you.
+Noto Sans JP is bundled for reproducible Japanese PDF rendering. The Docker
+workflow below installs the remaining PDF dependencies for you.
 
 ## Usage
 
@@ -98,8 +98,8 @@ docker build -t keireki .
 docker run --rm -v "$PWD:/app" keireki generate examples/profile.yaml
 ```
 
-The Docker image installs Noto CJK fonts and WeasyPrint system dependencies for
-reproducible PDF generation.
+The Docker image installs the WeasyPrint system dependencies. Keireki uses its
+bundled Noto Sans JP font for reproducible PDF generation.
 
 ## Project Scope
 

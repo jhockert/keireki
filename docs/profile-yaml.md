@@ -195,7 +195,11 @@ Work history rendered in both documents.
 - `achievements`: Results or impact. The newest roles render the first two items.
 - `technologies`: Tools and technologies. 職務経歴書 renders the first eight items.
 
-Recent and relevant roles should carry more detail. Older roles can be compact.
+The two most recent employer groups render detailed bullets in the
+職務経歴書. Each renders the first two responsibilities and first eight
+technologies; the newest group renders up to two achievements and the second
+group up to four. Older employer groups render their overview only, so keep
+that overview concise and self-contained.
 
 ### `education`
 
